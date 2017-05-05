@@ -32,11 +32,11 @@
 <div class="container">
 <div class="main"> <center> <h2 style="color:red">
 <form id="form_id" method="post" name="myform">
-<label>User Name :</label>
-<input type="text" name="username" id="username"/>
-<label>Password :</label>
-<input type="password" name="password" id="password"/>
-<input type="button" value="Login" id="submit" onclick="validate()"/>
+	<label>User Name :</label>
+		<input type="text" name="username" id="username"/>
+			<label>Password :</label>
+		<input type="password" name="password" id="password"/>
+	<input type="button" value="Login" id="submit" onclick="validate()"/>
 </form>
 <span><b class="note"><b class="valid">User Name : Dominic<br/>Password : Argento</b></span>
 
@@ -46,22 +46,25 @@
 
 <script>
 var attempt = 3; 
-function validate(){
-var username = document.getElementById("username").value;
-var password = document.getElementById("password").value;
-if ( username == "Dominic" && password == "Argento"){
-alert ("Login successful");
-window.location = "bbbb.html";
-return false;
-}
-else{
-attempt --;
-alert("You have left "+attempt+" attempt;");
+	function validate(){
+			var username = document.getElementById("username").value;
+			var password = document.getElementById("password").value;
+		if ( username == "Dominic" && password == "Argento"){
+		// Only this username and password will be the only one that works for now
+			alert ("Login successful");
+			//You are now logged into the website
+			window.location = "loggedin.html";
+		return false;
+	}
+	else{
+			attempt --;
+			alert("You have left "+attempt+" attempt;");
 
-if( attempt == 0){
-document.getElementById("username").disabled = true;
-document.getElementById("password").disabled = true;
-document.getElementById("submit").disabled = true;
+		if( attempt == 0){
+			document.getElementById("username").disabled = true;
+			document.getElementById("password").disabled = true;
+			document.getElementById("submit").disabled = true;
+			// If you put the incorrect username and password 3 times you will be blocked out
 return false;
 }
 }
