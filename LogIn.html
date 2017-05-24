@@ -38,36 +38,38 @@
 		<input type="password" name="password" id="password"/>
 	<input type="button" value="Login" id="submit" onclick="validate()"/>
 </form>
-<span><b class="note"><b class="valid">User Name : Dominic<br/>Password : Argento</b></span>
+
 
 </div>
 </div>
 
 
 <script>
-var attempt = 3; 
-	function validate(){
-			var username = document.getElementById("username").value;
-			var password = document.getElementById("password").value;
-		if ( username == "Dominic" && password == "Argento"){
-		// Only this username and password will be the only one that works for now
-			alert ("Login successful");
-			//You are now logged into the website
-			window.location = "loggedin.html";
-		return false;
-	}
-	else{
-			attempt --;
-			alert("You have left "+attempt+" attempt;");
+function validate() {
+    var un = document.getElementById("username").value;
+    var pw = document.getElementById("password").value;
+    var valid = -1;
 
-		if( attempt == 0){
-			document.getElementById("username").disabled = true;
-			document.getElementById("password").disabled = true;
-			document.getElementById("submit").disabled = true;
-			// If you put the incorrect username and password 3 times you will be blocked out
-return false;
-}
-}
+    var unArray = ["dominic", "matthew", "luca"];//These are the usernames
+    var pwArray = ["argento123", "flaherty123", "fermini123"];//These are the passwords
+	//This identitfies if the username and password match
+    for (var i=0; i <unArray.length; i++) {
+        if ((un == unArray[i]) && (pw == pwArray[i])) {
+            valid = i;
+            break;
+        }
+    }
+
+    if (valid != -1) {
+        alert ("Login was successful");//Alert (the code was succesful)
+		window.location = "loggedin.html";
+    }
+    else {//If password is wrong, an alert comes up saying to try again.
+        alert("Invalid Username and/or Password! Please try again. You will not be able to submit this form without a successful login")
+        document.getElementById("pword").value = "";
+        document.getElementById("usern").value = "";
+        document.getElementById("usern").focus();
+    }
 }
 </script>
 
